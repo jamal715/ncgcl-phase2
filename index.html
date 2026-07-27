@@ -18,15 +18,16 @@
     font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
     color: var(--ink);
     background: var(--paper);
-    padding: 0 0 40px;
+    padding: 0 0 48px;
     line-height: 1.5;
     max-width: 860px;
     margin: 0 auto;
+    overflow-x: hidden;
   }
   .ncg header {
     background: var(--brand);
     color: #EAF0F4;
-    padding: 26px 28px 24px;
+    padding: 30px 32px 26px;
     border-bottom: 4px solid var(--black);
   }
   .ncg .eyebrow {
@@ -36,88 +37,91 @@
   }
   .ncg h1 {
     font-family: "IBM Plex Serif", Georgia, serif;
-    font-size: 27px; font-weight: 600; margin: 0 0 8px; line-height: 1.2; color: #FFFFFF;
+    font-size: 26px; font-weight: 600; margin: 0 0 10px; line-height: 1.25; color: #FFFFFF;
   }
   .ncg header p { margin: 0; font-size: 14px; color: #C2D4DE; max-width: 58ch; }
-  .ncg .tabs { display: flex; gap: 2px; padding: 0 28px; background: var(--black); }
-  .ncg .tab {
-    font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .06em;
-    text-transform: uppercase; border: 0; cursor: pointer;
-    background: transparent; color: var(--grey-light); padding: 11px 16px;
+  .ncg main { padding: 28px 32px 0; }
+
+  .ncg .card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px 26px;
+    margin: 0 0 20px;
+    box-shadow: 0 1px 2px rgba(16,18,20,.04);
   }
-  .ncg .tab[aria-selected="true"] { background: var(--paper); color: var(--brand); font-weight: 500; }
-  .ncg main { padding: 26px 28px 0; }
-  .ncg fieldset { border: 0; padding: 0; margin: 0 0 30px; }
-  .ncg legend {
-    display: flex; align-items: baseline; gap: 10px; padding: 0 0 12px; width: 100%;
-    border-bottom: 1px solid var(--line); margin-bottom: 16px;
+  .ncg .card-head {
+    display: flex; align-items: center; gap: 12px;
+    padding: 0 0 16px; margin: 0 0 6px;
+    border-bottom: 1px solid var(--line);
   }
-  .ncg .num { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--brand); }
-  .ncg .legend-text { font-family: "IBM Plex Serif", Georgia, serif; font-size: 17px; font-weight: 600; color: var(--black); }
-  .ncg label { display: block; font-size: 13px; font-weight: 500; margin: 0 0 5px; }
-  .ncg .hint { font-size: 12px; color: var(--grey); margin: -2px 0 7px; }
-  .ncg .field { margin-bottom: 16px; }
-  .ncg .row { display: flex; gap: 14px; flex-wrap: wrap; }
-  .ncg .row > .field { flex: 1 1 220px; }
+  .ncg .num {
+    display: flex; align-items: center; justify-content: center;
+    flex: none; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--brand); color: #fff;
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500;
+  }
+  .ncg .legend-text { font-family: "IBM Plex Serif", Georgia, serif; font-size: 18px; font-weight: 600; color: var(--black); }
+  .ncg .card-sub { font-size: 12.5px; color: var(--grey); margin: 0 0 18px; }
+
+  .ncg label { display: block; font-size: 13.5px; font-weight: 600; margin: 0 0 4px; color: var(--black); }
+  .ncg .hint { font-size: 12.5px; color: var(--grey); margin: 0 0 8px; line-height: 1.4; }
+  .ncg .field { margin-bottom: 20px; min-width: 0; }
+  .ncg .field:last-child { margin-bottom: 0; }
+  .ncg .row { display: flex; gap: 18px; flex-wrap: wrap; }
+  .ncg .row > .field { flex: 1 1 240px; min-width: 0; }
+
   .ncg input[type=text], .ncg select, .ncg textarea {
-    width: 100%; font-family: inherit; font-size: 14px; color: var(--ink);
-    background: var(--white); border: 1px solid var(--line); border-radius: 3px;
-    padding: 9px 11px;
+    width: 100%; max-width: 100%; font-family: inherit; font-size: 14px; color: var(--ink);
+    background: var(--white); border: 1px solid var(--line); border-radius: 5px;
+    padding: 10px 12px;
   }
   .ncg textarea { min-height: 92px; resize: vertical; }
   .ncg input:focus, .ncg select:focus, .ncg textarea:focus, .ncg button:focus-visible {
     outline: 2px solid var(--brand); outline-offset: 1px;
   }
-  .ncg .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .ncg .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .ncg .chip {
     display: inline-flex; align-items: center; gap: 6px; font-size: 13px;
-    background: var(--white); border: 1px solid var(--line); border-radius: 999px;
-    padding: 6px 12px; cursor: pointer;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+    padding: 7px 13px; cursor: pointer;
   }
   .ncg .chip input { margin: 0; accent-color: var(--brand); }
-  .ncg .chip:has(input:checked) { background: var(--brand-soft); border-color: var(--brand); font-weight: 500; }
-  .ncg .actions { display: flex; align-items: center; gap: 14px; padding: 6px 0 10px; flex-wrap: wrap; }
+  .ncg .chip:has(input:checked) { background: var(--brand-soft); border-color: var(--brand); font-weight: 500; color: var(--brand); }
+
+  .ncg .actions {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 20px 26px; background: var(--white); border: 1px solid var(--line);
+    border-radius: 8px; box-shadow: 0 1px 2px rgba(16,18,20,.04);
+  }
   .ncg button.primary {
-    background: var(--brand); color: #fff; border: 0; border-radius: 3px;
+    background: var(--brand); color: #fff; border: 0; border-radius: 5px;
     font-family: inherit; font-size: 14px; font-weight: 600; padding: 11px 22px; cursor: pointer;
   }
   .ncg button.primary:hover { background: var(--black); }
   .ncg button.primary:disabled { opacity: .55; cursor: default; }
   .ncg button.ghost {
-    background: transparent; border: 1px solid var(--line); border-radius: 3px;
-    font-family: inherit; font-size: 13px; padding: 8px 14px; cursor: pointer; color: var(--ink);
+    background: transparent; border: 1px solid var(--line); border-radius: 5px;
+    font-family: inherit; font-size: 13px; padding: 9px 15px; cursor: pointer; color: var(--ink);
   }
   .ncg button.ghost:hover { border-color: var(--black); }
   .ncg .status { font-size: 13px; color: var(--grey); }
   .ncg .status.ok { color: var(--brand); font-weight: 500; }
   .ncg .status.err { color: #8C1D1D; }
   .ncg .note {
-    font-size: 12px; color: var(--grey); border-left: 2px solid var(--brand);
-    padding-left: 12px; margin: 18px 0 0;
+    font-size: 12.5px; color: var(--grey); border-left: 2px solid var(--brand);
+    padding-left: 12px; margin: 16px 2px 0;
   }
   .ncg .warn {
-    background: var(--white); border: 1px solid var(--line); border-left: 3px solid var(--black);
-    padding: 12px 14px; font-size: 13px; color: var(--ink); margin: 0 0 20px;
+    background: #FFF8EC; border: 1px solid #E6C98A; border-left: 3px solid var(--black);
+    border-radius: 6px; padding: 12px 15px; font-size: 13px; color: var(--ink); margin: 0 0 20px;
   }
-  .ncg .entry {
-    background: var(--white); border: 1px solid var(--line); border-radius: 3px;
-    padding: 14px 16px; margin-bottom: 12px;
-  }
-  .ncg .entry h3 { font-size: 15px; margin: 0 0 4px; font-family: "IBM Plex Serif", Georgia, serif; color: var(--black); }
-  .ncg .meta {
-    font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--grey);
-    letter-spacing: .04em; margin: 0 0 8px;
-  }
-  .ncg .entry p { margin: 0 0 6px; font-size: 13.5px; white-space: pre-wrap; }
-  .ncg .tag {
-    display: inline-block; font-size: 11px; font-family: "IBM Plex Mono", monospace;
-    background: var(--brand-soft); color: var(--brand); border-radius: 2px; padding: 2px 7px;
-    margin: 0 5px 4px 0;
-  }
-  .ncg .tag.p-high { background: var(--black); color: #FFFFFF; }
-  .ncg .empty { color: var(--grey); font-size: 14px; padding: 30px 0; text-align: center; }
   .ncg .hidden { display: none; }
-  @media (max-width: 520px) { .ncg main, .ncg header, .ncg .tabs { padding-left: 16px; padding-right: 16px; } }
+  @media (max-width: 560px) {
+    .ncg main, .ncg header { padding-left: 18px; padding-right: 18px; }
+    .ncg .card { padding: 20px 18px; }
+    .ncg .actions { padding: 16px 18px; }
+  }
 </style>
 
 <div class="ncg">
@@ -133,8 +137,9 @@
         This form is not yet connected to a submission inbox. Replace <code>FORMSPREE_ENDPOINT</code> near the top of the script with your real Formspree endpoint before sharing this link.
       </div>
 
-      <fieldset>
-        <legend><span class="num">01</span><span class="legend-text">About you</span></legend>
+      <section class="card">
+        <div class="card-head"><span class="num">1</span><span class="legend-text">About you</span></div>
+        <p class="card-sub">So we know who to follow up with if we have a question about your suggestion.</p>
         <div class="row">
           <div class="field">
             <label for="f-name">Name</label>
@@ -148,12 +153,14 @@
         </div>
         <div class="field">
           <label for="f-role">Your role on the portal</label>
-          <p class="hint">Whichever comes closest to how you actually use it.</p>
+          <p class="hint">Whichever comes closest to how you actually use it &mdash; this helps us judge who a fix affects.</p>
           <select id="f-role">
             <option value="">Select a role</option>
             <option>Analyst</option>
             <option>Officer</option>
             <option>Finance Officer</option>
+            <option>Research</option>
+            <option>Treasury / Investment</option>
             <option>Admin</option>
             <option>FI User</option>
             <option>Monitor / read-only</option>
@@ -162,18 +169,20 @@
             <option>Other / not a portal user yet</option>
           </select>
         </div>
-      </fieldset>
+      </section>
 
-      <fieldset>
-        <legend><span class="num">02</span><span class="legend-text">What this is about</span></legend>
+      <section class="card">
+        <div class="card-head"><span class="num">2</span><span class="legend-text">What this is about</span></div>
+        <p class="card-sub">This tells us which screen to look at and which team should own the fix.</p>
         <div class="field">
           <label>Which parts of the portal does this affect?</label>
-          <p class="hint">Select as many as apply — it's fine to pick more than one.</p>
+          <p class="hint">Select as many as apply &mdash; it's fine to pick more than one.</p>
           <div class="chips" id="f-areas"></div>
         </div>
         <div class="row">
           <div class="field">
             <label for="f-type">What kind of suggestion is this?</label>
+            <p class="hint">Helps us route it to the right team and roughly gauge the effort.</p>
             <select id="f-type">
               <option value="">Select a type</option>
               <option>New feature</option>
@@ -198,10 +207,11 @@
             </select>
           </div>
         </div>
-      </fieldset>
+      </section>
 
-      <fieldset>
-        <legend><span class="num">03</span><span class="legend-text">The suggestion</span></legend>
+      <section class="card">
+        <div class="card-head"><span class="num">3</span><span class="legend-text">The suggestion</span></div>
+        <p class="card-sub">The part that actually matters &mdash; take as much space as you need.</p>
         <div class="field">
           <label for="f-title">Summary</label>
           <p class="hint">One line, so we can scan through suggestions quickly.</p>
@@ -219,14 +229,14 @@
         </div>
         <div class="field">
           <label for="f-followup">Happy to walk us through it in a 20-minute session?</label>
-          <p class="hint">Entirely optional &mdash; only if you'd rather explain it out loud.</p>
+          <p class="hint">Entirely optional &mdash; only if you'd rather explain it out loud than in writing.</p>
           <select id="f-followup">
             <option>Yes</option>
             <option>Only if needed</option>
             <option>No, the note above covers it</option>
           </select>
         </div>
-      </fieldset>
+      </section>
 
       <div class="actions">
         <button class="primary" id="f-submit" onclick="ncgSubmit()">Send suggestion</button>
