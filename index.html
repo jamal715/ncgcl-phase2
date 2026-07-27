@@ -1,0 +1,343 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  .ncg * { box-sizing: border-box; }
+  .ncg {
+    --brand: #004D73;
+    --brand-soft: #E5EDF2;
+    --black: #101214;
+    --ink: #1C1F22;
+    --grey: #6B7276;
+    --grey-light: #9AA0A4;
+    --line: #D7DBDE;
+    --paper: #F2F3F4;
+    --white: #FFFFFF;
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    padding: 0 0 40px;
+    line-height: 1.5;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .ncg header {
+    background: var(--brand);
+    color: #EAF0F4;
+    padding: 26px 28px 24px;
+    border-bottom: 4px solid var(--black);
+  }
+  .ncg .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: #9DBACB; margin: 0 0 10px;
+  }
+  .ncg h1 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 27px; font-weight: 600; margin: 0 0 8px; line-height: 1.2; color: #FFFFFF;
+  }
+  .ncg header p { margin: 0; font-size: 14px; color: #C2D4DE; max-width: 58ch; }
+  .ncg .tabs { display: flex; gap: 2px; padding: 0 28px; background: var(--black); }
+  .ncg .tab {
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .06em;
+    text-transform: uppercase; border: 0; cursor: pointer;
+    background: transparent; color: var(--grey-light); padding: 11px 16px;
+  }
+  .ncg .tab[aria-selected="true"] { background: var(--paper); color: var(--brand); font-weight: 500; }
+  .ncg main { padding: 26px 28px 0; }
+  .ncg fieldset { border: 0; padding: 0; margin: 0 0 30px; }
+  .ncg legend {
+    display: flex; align-items: baseline; gap: 10px; padding: 0 0 12px; width: 100%;
+    border-bottom: 1px solid var(--line); margin-bottom: 16px;
+  }
+  .ncg .num { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--brand); }
+  .ncg .legend-text { font-family: "IBM Plex Serif", Georgia, serif; font-size: 17px; font-weight: 600; color: var(--black); }
+  .ncg label { display: block; font-size: 13px; font-weight: 500; margin: 0 0 5px; }
+  .ncg .hint { font-size: 12px; color: var(--grey); margin: -2px 0 7px; }
+  .ncg .field { margin-bottom: 16px; }
+  .ncg .row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .ncg .row > .field { flex: 1 1 220px; }
+  .ncg input[type=text], .ncg select, .ncg textarea {
+    width: 100%; font-family: inherit; font-size: 14px; color: var(--ink);
+    background: var(--white); border: 1px solid var(--line); border-radius: 3px;
+    padding: 9px 11px;
+  }
+  .ncg textarea { min-height: 92px; resize: vertical; }
+  .ncg input:focus, .ncg select:focus, .ncg textarea:focus, .ncg button:focus-visible {
+    outline: 2px solid var(--brand); outline-offset: 1px;
+  }
+  .ncg .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .ncg .chip {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 13px;
+    background: var(--white); border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 12px; cursor: pointer;
+  }
+  .ncg .chip input { margin: 0; accent-color: var(--brand); }
+  .ncg .chip:has(input:checked) { background: var(--brand-soft); border-color: var(--brand); font-weight: 500; }
+  .ncg .actions { display: flex; align-items: center; gap: 14px; padding: 6px 0 10px; flex-wrap: wrap; }
+  .ncg button.primary {
+    background: var(--brand); color: #fff; border: 0; border-radius: 3px;
+    font-family: inherit; font-size: 14px; font-weight: 600; padding: 11px 22px; cursor: pointer;
+  }
+  .ncg button.primary:hover { background: var(--black); }
+  .ncg button.primary:disabled { opacity: .55; cursor: default; }
+  .ncg button.ghost {
+    background: transparent; border: 1px solid var(--line); border-radius: 3px;
+    font-family: inherit; font-size: 13px; padding: 8px 14px; cursor: pointer; color: var(--ink);
+  }
+  .ncg button.ghost:hover { border-color: var(--black); }
+  .ncg .status { font-size: 13px; color: var(--grey); }
+  .ncg .status.ok { color: var(--brand); font-weight: 500; }
+  .ncg .status.err { color: #8C1D1D; }
+  .ncg .note {
+    font-size: 12px; color: var(--grey); border-left: 2px solid var(--brand);
+    padding-left: 12px; margin: 18px 0 0;
+  }
+  .ncg .warn {
+    background: var(--white); border: 1px solid var(--line); border-left: 3px solid var(--black);
+    padding: 12px 14px; font-size: 13px; color: var(--ink); margin: 0 0 20px;
+  }
+  .ncg .entry {
+    background: var(--white); border: 1px solid var(--line); border-radius: 3px;
+    padding: 14px 16px; margin-bottom: 12px;
+  }
+  .ncg .entry h3 { font-size: 15px; margin: 0 0 4px; font-family: "IBM Plex Serif", Georgia, serif; color: var(--black); }
+  .ncg .meta {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--grey);
+    letter-spacing: .04em; margin: 0 0 8px;
+  }
+  .ncg .entry p { margin: 0 0 6px; font-size: 13.5px; white-space: pre-wrap; }
+  .ncg .tag {
+    display: inline-block; font-size: 11px; font-family: "IBM Plex Mono", monospace;
+    background: var(--brand-soft); color: var(--brand); border-radius: 2px; padding: 2px 7px;
+    margin: 0 5px 4px 0;
+  }
+  .ncg .tag.p-high { background: var(--black); color: #FFFFFF; }
+  .ncg .empty { color: var(--grey); font-size: 14px; padding: 30px 0; text-align: center; }
+  .ncg .hidden { display: none; }
+  @media (max-width: 520px) { .ncg main, .ncg header, .ncg .tabs { padding-left: 16px; padding-right: 16px; } }
+</style>
+
+<div class="ncg">
+  <header>
+    <p class="eyebrow">Credit Guarantee Portal &middot; Phase 2</p>
+    <h1>Tell us what the portal should do next</h1>
+    <p>Phase 1 is live. Before we lock the Phase 2 scope, we want the changes you actually need &mdash; from the people using this daily. One suggestion per submission; send as many as you like.</p>
+  </header>
+
+  <main>
+    <div id="ncg-form-view">
+      <div class="warn hidden" id="ncg-nostore">
+        This form is not yet connected to a submission inbox. Replace <code>FORMSPREE_ENDPOINT</code> near the top of the script with your real Formspree endpoint before sharing this link.
+      </div>
+
+      <fieldset>
+        <legend><span class="num">01</span><span class="legend-text">About you</span></legend>
+        <div class="row">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input type="text" id="f-name" placeholder="e.g. Ayesha Khan">
+          </div>
+          <div class="field">
+            <label for="f-org">Institution or department</label>
+            <input type="text" id="f-org" placeholder="e.g. NCGCL Operations / Bank ABC">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-role">Your role on the portal</label>
+          <select id="f-role">
+            <option value="">Select a role</option>
+            <option>Analyst</option>
+            <option>Officer</option>
+            <option>Finance Officer</option>
+            <option>Admin</option>
+            <option>FI User</option>
+            <option>Monitor / read-only</option>
+            <option>Technology team</option>
+            <option>Management</option>
+            <option>Other / not a portal user yet</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">02</span><span class="legend-text">What this is about</span></legend>
+        <div class="field">
+          <label>Areas of the portal it touches</label>
+          <p class="hint">Pick all that apply.</p>
+          <div class="chips" id="f-areas"></div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-type">Type of suggestion</label>
+            <select id="f-type">
+              <option value="">Select a type</option>
+              <option>New feature</option>
+              <option>Improvement to something that exists</option>
+              <option>Bug or incorrect behaviour</option>
+              <option>New report or data export</option>
+              <option>Validation or data quality rule</option>
+              <option>Notification or email change</option>
+              <option>Access, roles or permissions</option>
+              <option>Training or documentation</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-priority">How urgent is it?</label>
+            <select id="f-priority">
+              <option value="">Select urgency</option>
+              <option>Bottleneck &mdash; needed right away</option>
+              <option>Important, causes regular delay</option>
+              <option>Useful, not urgent</option>
+              <option>Nice to have someday</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">03</span><span class="legend-text">The suggestion</span></legend>
+        <div class="field">
+          <label for="f-title">Summary</label>
+          <input type="text" id="f-title" placeholder="e.g. Bulk-approve pending loans from the loan list">
+        </div>
+        <div class="field">
+          <label for="f-desc">What should it do?</label>
+          <p class="hint">Describe it the way you'd explain it to a colleague. Screens, fields, and who it's for all help.</p>
+          <textarea id="f-desc"></textarea>
+        </div>
+        <div class="field">
+          <label for="f-pain">What do you do today instead?</label>
+          <textarea id="f-pain"></textarea>
+        </div>
+        <div class="field">
+          <label for="f-followup">Happy to walk us through it in a 20-minute session?</label>
+          <select id="f-followup">
+            <option>Yes</option>
+            <option>Only if needed</option>
+            <option>No, the note above covers it</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button class="primary" id="f-submit" onclick="ncgSubmit()">Send suggestion</button>
+        <button class="ghost" onclick="ncgCopy()">Copy suggestion</button>
+        <button class="ghost" onclick="ncgClear()">Clear form</button>
+        <span class="status" id="f-status"></span>
+      </div>
+      <p class="note">Submissions go straight to the Phase 2 inbox &mdash; you won't see other people's suggestions on this page, but the team lead can see and review everything that comes in.</p>
+    </div>
+  </main>
+</div>
+
+<script>
+  // ---- REQUIRED: set this to your real Formspree endpoint before sharing the link ----
+  // Sign up at https://formspree.io, create a form, and paste the URL it gives you here.
+  // It looks like: https://formspree.io/f/xzzjnwqa
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykrlndd';
+
+  const NCG_AREAS = ["Dashboard","Tasks / pending actions","File upload & validation","Guarantee coverage","Portfolio reporting","Loans & decisions","Analyst recommendations","Claims","Field corrections","Recoveries","Borrowers","Financial institutions","Products","Users & roles","Activity logs","Emails & notifications","Reports & exports","Something else"];
+  const ncgConfigured = FORMSPREE_ENDPOINT.indexOf('FORMSPREE_ENDPOINT') === -1;
+
+  (function init() {
+    document.getElementById('f-areas').innerHTML = NCG_AREAS.map(function (a, i) {
+      return '<label class="chip"><input type="checkbox" value="' + a + '" id="area-' + i + '"><span>' + a + '</span></label>';
+    }).join('');
+    if (!ncgConfigured) {
+      document.getElementById('ncg-nostore').classList.remove('hidden');
+    }
+  })();
+
+  function val(id) { return (document.getElementById(id).value || '').trim(); }
+
+  function collect() {
+    return {
+      name: val('f-name') || 'Anonymous',
+      org: val('f-org'),
+      role: val('f-role'),
+      areas: Array.from(document.querySelectorAll('#f-areas input:checked')).map(function (c) { return c.value; }),
+      type: val('f-type'),
+      priority: val('f-priority'),
+      title: val('f-title'),
+      description: val('f-desc'),
+      workaround: val('f-pain'),
+      followup: val('f-followup'),
+      submitted: new Date().toISOString()
+    };
+  }
+
+  function ncgClear() {
+    ['f-name','f-org','f-role','f-type','f-priority','f-title','f-desc','f-pain'].forEach(function (id) {
+      document.getElementById(id).value = '';
+    });
+    document.querySelectorAll('#f-areas input').forEach(function (c) { c.checked = false; });
+    document.getElementById('f-status').textContent = '';
+  }
+
+  function ncgCopy() {
+    const r = collect();
+    const text = [
+      'NCGCL Credit Guarantee Portal - Phase 2 suggestion',
+      'Name: ' + r.name,
+      'Role: ' + r.role,
+      'Institution / department: ' + r.org,
+      'Areas: ' + r.areas.join('; '),
+      'Type: ' + r.type,
+      'Urgency: ' + r.priority,
+      'Summary: ' + r.title,
+      'What it should do: ' + r.description,
+      'What I do today instead: ' + r.workaround,
+      'Available for a session: ' + r.followup
+    ].join('\n');
+    const status = document.getElementById('f-status');
+    navigator.clipboard.writeText(text).then(function () {
+      status.className = 'status ok';
+      status.textContent = 'Copied. Paste it into an email to the Phase 2 mailbox.';
+    }).catch(function () {
+      status.className = 'status err';
+      status.textContent = 'Copy failed. Select the text in the fields manually.';
+    });
+  }
+
+  async function ncgSubmit() {
+    const status = document.getElementById('f-status');
+    const btn = document.getElementById('f-submit');
+    const record = collect();
+    if (!record.title || !record.description) {
+      status.className = 'status err';
+      status.textContent = 'Add a summary and a description before sending.';
+      return;
+    }
+    if (!ncgConfigured) {
+      status.className = 'status err';
+      status.textContent = 'This form has no inbox configured yet — use Copy suggestion and email it instead.';
+      return;
+    }
+    btn.disabled = true;
+    status.className = 'status';
+    status.textContent = 'Sending...';
+    try {
+      const payload = Object.assign({}, record, { areas: record.areas.join(', ') });
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        ncgClear();
+        status.className = 'status ok';
+        status.textContent = 'Sent. Add another whenever you think of one.';
+      } else {
+        status.className = 'status err';
+        status.textContent = 'That did not send. Use Copy suggestion and email it instead.';
+      }
+    } catch (e) {
+      status.className = 'status err';
+      status.textContent = 'That did not send. Use Copy suggestion and email it instead.';
+    }
+    btn.disabled = false;
+  }
+</script>
