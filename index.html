@@ -142,11 +142,13 @@
           </div>
           <div class="field">
             <label for="f-org">Department</label>
+            <p class="hint">Your NCGCL department, or the financial institution you work for.</p>
             <input type="text" id="f-org" placeholder="e.g. NCGCL Operations / Bank ABC">
           </div>
         </div>
         <div class="field">
           <label for="f-role">Your role on the portal</label>
+          <p class="hint">Whichever comes closest to how you actually use it.</p>
           <select id="f-role">
             <option value="">Select a role</option>
             <option>Analyst</option>
@@ -165,13 +167,13 @@
       <fieldset>
         <legend><span class="num">02</span><span class="legend-text">What this is about</span></legend>
         <div class="field">
-          <label>Areas of the portal it touches</label>
-          <p class="hint">Pick all that apply.</p>
+          <label>Which parts of the portal does this affect?</label>
+          <p class="hint">Select as many as apply — it's fine to pick more than one.</p>
           <div class="chips" id="f-areas"></div>
         </div>
         <div class="row">
           <div class="field">
-            <label for="f-type">Type of suggestion</label>
+            <label for="f-type">What kind of suggestion is this?</label>
             <select id="f-type">
               <option value="">Select a type</option>
               <option>New feature</option>
@@ -186,6 +188,7 @@
           </div>
           <div class="field">
             <label for="f-priority">How urgent is it?</label>
+            <p class="hint">How much is this costing you right now, in time or hassle?</p>
             <select id="f-priority">
               <option value="">Select urgency</option>
               <option>Bottleneck &mdash; needed right away</option>
@@ -201,19 +204,22 @@
         <legend><span class="num">03</span><span class="legend-text">The suggestion</span></legend>
         <div class="field">
           <label for="f-title">Summary</label>
+          <p class="hint">One line, so we can scan through suggestions quickly.</p>
           <input type="text" id="f-title" placeholder="e.g. Bulk-approve pending loans from the loan list">
         </div>
         <div class="field">
           <label for="f-desc">What should it do?</label>
-          <p class="hint">Describe it the way you'd explain it to a colleague. Screens, fields, and who it's for all help.</p>
+          <p class="hint">Explain it the way you'd tell a colleague. Which screen, what fields, and who it's for all help us picture it.</p>
           <textarea id="f-desc"></textarea>
         </div>
         <div class="field">
-          <label for="f-pain">What do you do instead?</label>
+          <label for="f-pain">What do you do instead, right now?</label>
+          <p class="hint">This is the part that tells us how much time or frustration a fix would save.</p>
           <textarea id="f-pain"></textarea>
         </div>
         <div class="field">
           <label for="f-followup">Happy to walk us through it in a 20-minute session?</label>
+          <p class="hint">Entirely optional &mdash; only if you'd rather explain it out loud.</p>
           <select id="f-followup">
             <option>Yes</option>
             <option>Only if needed</option>
@@ -228,7 +234,7 @@
         <button class="ghost" onclick="ncgClear()">Clear form</button>
         <span class="status" id="f-status"></span>
       </div>
-      <p class="note">Submissions go straight to the Phase 2 inbox</p>
+      <p class="note">Submissions go straight to the Phase 2 inbox.</p>
     </div>
   </main>
 </div>
